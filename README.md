@@ -1,4 +1,6 @@
 #Risotto
+Risotto is a VC framework based on koajs. it makes heavy use of es6 harmony features and thus requires node´s **--harmony** flag
+
 ##Install
 __Risotto requires and redis to run__
 ```sh
@@ -125,7 +127,7 @@ routes:
   GET :id-(.+): Project.show
 ```
 
-##application.js
+##Application.js
 
 ```js
 module.exports = Risotto.Application.extend({
@@ -143,3 +145,6 @@ module.exports = Risotto.Application.extend({
 	}
 });
 ```
+
+##Modules
+…
