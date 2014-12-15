@@ -1,6 +1,4 @@
 #Risotto
-Risotto is VC webframework written in Nodejs heavily inspired by ruby on rails.
-
 ##Install
 __Risotto requires and redis to run__
 ```sh
@@ -136,7 +134,6 @@ module.exports = Risotto.Application.extend({
 		//do something onAuthorizationError
 	},
 
-	/*
 	onNotFoundError : function*(koaContext, next){
 		// do something onNotFoundError
 	},
