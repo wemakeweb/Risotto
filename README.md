@@ -27,7 +27,7 @@ config/
 Require Risotto where ever you want and pass the those folders to the *initialize* method like so: 
 
 ```js
-var Risotto = new require('./risotto');
+var Risotto = require('./risotto');
 Risotto.initialize(__dirname);
 ```
 
