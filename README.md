@@ -80,37 +80,6 @@ access to the koa request object
 ###this.response
 access to the koa response object
 
-##Controller Filters
-With filters are a way to reuse common controller functionality. We deferentiate between **beforeFilter** which run before the controller and the **afterFilter** which runs after the controller. You can use filters the following way:
-
-```js
-Risotto.Controller.extend({
-	// calls the `user` and the `authorize` filter before
-	beforeFilter: ['user', 'authorize']
-})
-
-Risotto.Controller.extend({
-	beforeFilter: {
-		/* 
-		 * calls `user` filter before 
-		 * all controller methods
-		 */
-		user: "*", 
-
-		/*
-		 * calls `authorize` filter only 
-		 * before protectedMethod
-		 */
-		authorize: 'protectedMethod',
-
-		/*
-		 * calls `foo` filter only 
-		 * before protectedMethod and show
-		 */
-		foo: ['show', 'protectedMethod']
-});
-```
-
 ##Routes
 The routes file in the config directory contains all the individual routes to the controllers. It has the following syntax:
 
@@ -148,3 +117,35 @@ module.exports = Risotto.Application.extend({
 
 ##Modules
 …
+
+##Filters
+With filters are a way to reuse common controller functionality. We deferentiate between **beforeFilter** which run before the controller and the **afterFilter** which runs after the controller. You can use filters the following way:
+
+```js
+Risotto.Controller.extend({
+	// calls the `user` and the `authorize` filter before
+	beforeFilter: ['user', 'authorize']
+})
+
+Risotto.Controller.extend({
+	beforeFilter: {
+		/* 
+		 * calls `user` filter before 
+		 * all controller methods
+		 */
+		user: '*', 
+
+		/*
+		 * calls `authorize` filter only 
+		 * before protectedMethod
+		 */
+		authorize: 'protectedMethod',
+
+		/*
+		 * calls `foo` filter only 
+		 * before protectedMethod and show
+		 */
+		foo: ['show', 'protectedMethod']
+	}
+});
+```
