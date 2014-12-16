@@ -30,7 +30,7 @@ __it makes heavy use of es6 harmony features and thus requires node´s **--harmo
 require('risotto').initialize(__dirname);
 ```
 
-After calling *initialize* Yolo will boot up and look up all [controllers](https://github.com/wemakeweb/Risotto#controllers) in /app/controllers. It will bind all [routes](https://github.com/wemakeweb/Risotto#routes) configured in the /config/routes.yml file for you. 
+After calling *initialize* Risotto will boot up and look up all [controllers](https://github.com/wemakeweb/Risotto#controllers) in /app/controllers. It will bind all [routes](https://github.com/wemakeweb/Risotto#routes) configured in the /config/routes.yml file for you. 
 __Be Aware__ Risotto will register a global variable named "Risotto".
 
 ##Controllers
@@ -100,6 +100,9 @@ routes:
 ```js
 module.exports = Risotto.Application.extend({
 	
+	// process title
+	title: "My Risotto App",
+	
 	onAuthorizationError : function*(koaContext, next){
 		//do something onAuthorizationError
 	},
@@ -118,7 +121,8 @@ module.exports = Risotto.Application.extend({
 …
 
 ##Filters
-With filters are a way to reuse common controller functionality. We deferentiate between **beforeFilter** which run before the controller and the **afterFilter** which runs after the controller. You can use filters the following way:
+Filters are a way to reuse common controller functionality. We differentiate between **beforeFilter** which run before the controller and the **afterFilter** which run after the actual controller.
+###Using Filters
 
 ```js
 Risotto.Controller.extend({
@@ -146,5 +150,18 @@ Risotto.Controller.extend({
 		 */
 		foo: ['show', 'protectedMethod']
 	}
+});
+```
+###Defining Filters
+Create a new file in app/filters an call `Risotto.before` to register a beforeFilter and `Risotto.after` to register a after filter.
+```js
+Risotto.before('user', function*(){
+	if( !this.session || !this.session.user_id ){
+		return;
+	}
+	
+	this.user = yield User.findOne({ id: this.session.user_id });
+
+	//`this` referes to the controller context
 });
 ```
