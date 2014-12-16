@@ -1,5 +1,5 @@
 #Risotto
-Risotto is a VC framework based on koajs. it makes heavy use of es6 harmony features and thus requires node´s **--harmony** flag
+Risotto is a VC framework based on koajs.
 
 ##Install
 __Risotto requires and redis to run__
@@ -25,7 +25,7 @@ config/
 ```
 
 Require Risotto where ever you want and pass the those folders to the *initialize* method like this: 
-
+__it makes heavy use of es6 harmony features and thus requires node´s **--harmony** flag__
 ```js
 require('risotto').initialize(__dirname);
 ```
