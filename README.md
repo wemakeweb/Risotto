@@ -24,15 +24,14 @@ config/
 	routes.yml
 ```
 
-Require Risotto where ever you want and pass the those folders to the *initialize* method like so: 
+Require Risotto where ever you want and pass the those folders to the *initialize* method like this: 
 
 ```js
-var Risotto = require('./risotto');
-Risotto.initialize(__dirname);
+require('risotto').initialize(__dirname);
 ```
 
 After calling *initialize* Yolo will boot up and look up all [controllers](https://github.com/wemakeweb/Risotto#controllers) in /app/controllers. It will bind all [routes](https://github.com/wemakeweb/Risotto#routes) configured in the /config/routes.yml file for you. 
-__Be Aware__ that Yolo can be used in libary fashion but its a framework and it will register a global variable named "Risotto".
+__Be Aware__ Risotto will register a global variable named "Risotto".
 
 ##Controllers
 Controllers take the main part in handling incoming requests and processing them.
