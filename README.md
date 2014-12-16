@@ -2,7 +2,7 @@
 Risotto is a VC framework based on koajs.
 
 ##Install
-__Risotto requires and redis to run__
+__Risotto requires redis to run__
 ```sh
 $ npm install risotto
 ```
@@ -153,15 +153,14 @@ Risotto.Controller.extend({
 });
 ```
 ###Defining Filters
-Create a new file in app/filters an call `Risotto.before` to register a beforeFilter and `Risotto.after` to register a after filter.
+Create a new file in app/filters and call `Risotto.before` to register a beforeFilter and `Risotto.after` to register a afterFilter.
 ```js
 Risotto.before('user', function*(){
 	if( !this.session || !this.session.user_id ){
 		return;
 	}
 	
-	this.user = yield User.findOne({ id: this.session.user_id });
-
 	//`this` referes to the controller context
+	this.user = yield User.findOne({ id: this.session.user_id });
 });
 ```
