@@ -1,11 +1,8 @@
 {
-  "name": "Risotto",
+  "name": "risotto",
   "version": "0.0.1",
-  "author": {
-    "name": "Sebastian Otto",
-    "email": "sebastian@wemakeweb.de"
-  },
-  "description": "",
+  "author": "Sebastian Otto <sebastian@wemakeweb.de>",
+  "description": "Risotto is a VC framework based on koajs. it makes heavy use of es6 harmony features and thus requires node´s **--harmony** flag",
   "repository": {
     "type": "git",
     "url": "https://github.com/wemakeweb/Risotto.git"
@@ -52,5 +49,9 @@
   "bugs": {
     "url": "https://github.com/wemakeweb/Risotto/issues"
   },
-  "homepage": "https://github.com/wemakeweb/Risotto"
+  "homepage": "https://github.com/wemakeweb/Risotto",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
