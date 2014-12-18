@@ -50,8 +50,13 @@
     "url": "https://github.com/wemakeweb/Risotto/issues"
   },
   "homepage": "https://github.com/wemakeweb/Risotto",
-  "devDependencies": {},
+  "devDependencies": {
+    "jscs": "~1.8.1",
+    "jshint": "~2.5.10",
+    "jshint-full-path": "~1.1.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/jshint src/ --reporter=./node_modules/jshint-full-path/index.js",
+    "codeStyle": "./node_modules/.bin/jscs ."
   }
 }

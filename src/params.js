@@ -3,7 +3,7 @@ var _ = require("underscore");
 function Params() {}
 
 Params.prototype.set = function(obj, val) {
-	if(_.isString(obj) && val){
+	if (_.isString(obj) && val){
 		this[obj] = val;
 		return;
 	}
@@ -24,7 +24,7 @@ Params.prototype.take = function(/** args */){
 };
 
 Params.prototype.setFile = function(file){
-	if(!this.files){
+	if (!this.files){
 		this.files = [];
 	}
 	this.files.push(file);

@@ -7,7 +7,6 @@ var extend = require('backbone').Model.extend;
 
 module.exports = BaseApplication;
 
-
 /**
  * Risotto.Application is the base Application
  */
@@ -20,12 +19,12 @@ _.extend( BaseApplication.prototype, {
      */
 
     title: 'Risotto Application',
-    
+
     /**
      * Handle authorization errors.
      */
-    
-    onAuthorizationError : function*(koaContext, next){
+
+    onAuthorizationError: function*(koaContext, next){
 
     },
 
@@ -33,8 +32,8 @@ _.extend( BaseApplication.prototype, {
      * Handle generic errors.
      */
 
-    onError : function*(koaContext, next, error){
-        if(Risotto.devMode){
+    onError: function*(koaContext, next, error){
+        if (Risotto.devMode){
             koaContext.response.body = '<pre>' + error.stack + '</pre>';
         }
 
@@ -45,11 +44,10 @@ _.extend( BaseApplication.prototype, {
      * Handle not found errors.
      */
 
-    onNotFoundError : function*(koaContext, next){
+    onNotFoundError: function*(koaContext, next){
 
     }
 });
-
 
 /**
  * Make it extendable

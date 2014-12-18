@@ -176,7 +176,6 @@ var checkSubtree = function (value, pattern) {
     throw new Error("Failed Match.Where validation");
   }
 
-
   if (pattern instanceof Optional)
     pattern = Match.OneOf(undefined, pattern.pattern);
 
@@ -234,10 +233,11 @@ var checkSubtree = function (value, pattern) {
   var requiredPatterns = {};
   var optionalPatterns = {};
   _.each(pattern, function (subPattern, key) {
-    if (subPattern instanceof Optional)
+    if (subPattern instanceof Optional){
       optionalPatterns[key] = subPattern.pattern;
-    else
+    } else {
       requiredPatterns[key] = subPattern;
+    }
   });
 
   _.each(value, function (subValue, key) {
@@ -262,10 +262,7 @@ var checkSubtree = function (value, pattern) {
   });
 
   _.each(requiredPatterns, function (subPattern, key) {
-    throw new 
-
-
-    Error("Missing key '" + key + "'");
+    throw new Error("Missing key '" + key + "'");
   });
 };
 
@@ -325,10 +322,11 @@ var _jsKeywords = ["do", "if", "in", "for", "let", "new", "try", "var", "case",
 // Assumes the base of path is already escaped properly
 // returns key + base
 var _prependPath = function (key, base) {
-  if ((typeof key) === "number" || key.match(/^[0-9]+$/))
+  if ((typeof key) === "number" || key.match(/^[0-9]+$/)){
     key = "[" + key + "]";
-  else if (!key.match(/^[a-z_$][0-9a-z_$]*$/i) || _.contains(_jsKeywords, key))
+  } else if (!key.match(/^[a-z_$][0-9a-z_$]*$/i) || _.contains(_jsKeywords, key)){
     key = JSON.stringify([key]);
+  }
 
   if (base && base[0] !== "[")
     return key + '.' + base;

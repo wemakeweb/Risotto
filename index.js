@@ -61,9 +61,9 @@ Risotto.prototype.initialize = co(function*( base ){
 	//load the check lib
 	require('./src/check');
 
- 	this.env = flags.e || 'development';
+	this.env = flags.e || 'development';
 	this.devMode = (this.env == "development");
-	
+
 	this.path = base;
 
 	this.CONFIG = path.join(base, 'config/');
@@ -122,8 +122,7 @@ Risotto.prototype.printStartupInfo = function(){
 	this.logger.info('Booting ' + this.env );
 	this.logger.info('Version: ' + this.version);
 	this.logger.info('Globalizing Risotto');
-}	
-
+}
 
 /**
  * error catcher
@@ -131,13 +130,12 @@ Risotto.prototype.printStartupInfo = function(){
 
 Risotto.prototype.onerror = function(err){
 	// throw in dev mode
-	if(this.env === 'development') throw err;
+	if (this.env === 'development') throw err;
 	this.logError(err);
 };
 
 Risotto.prototype.logError = function(err) {
 	var msg = err.stack || err.toString();
-
 	this.logger.error(msg.replace(/^/gm, '  '));
 	this.logger.error('');
 	this.logger.error('');
@@ -148,5 +146,5 @@ Risotto.prototype.logError = function(err) {
  */
 Risotto.prototype.exit = function(err){
 	this.logger.error(err);
-	process.exit(1); 
+	process.exit(1);
 };

@@ -12,8 +12,8 @@ var filters = {
 
 ['before', 'after'].forEach(function(when){
  	Risotto[when] = function(name, fn){
- 		if(filters[when][name]){
-			throw new Error('There\'s already a Filter named:"'+ name +'"');
+ 		if (filters[when][name]){
+			throw new Error('There\'s already a Filter named:"' + name + '"');
 		}
 
  		filters[when][name] = fn;
@@ -27,8 +27,8 @@ var filters = {
 
 Risotto.callBefore = function *(toCall, controllerContext){
 	yield * forEach(toCall, function*(filter){
-		if(!(filter in filters.before)){
-			throw new Error('There\'s no Filter named: '+ filter);
+		if (!(filter in filters.before)){
+			throw new Error('There\'s no Filter named: ' + filter);
 		}
 		yield filters.before[filter].call(controllerContext);
 	});
@@ -36,8 +36,8 @@ Risotto.callBefore = function *(toCall, controllerContext){
 
 Risotto.callAfter = function *(toCall, controllerContext){
 	yield * forEach(toCall, function*(filter){
-		if(!(filter in filters.after)){
-			throw new Error('There\'s no Filter named: '+ filter);
+		if (!(filter in filters.after)){
+			throw new Error('There\'s no Filter named: ' + filter);
 		}
 		yield filters.after[filter].call(controllerContext);
 	});

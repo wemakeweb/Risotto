@@ -17,7 +17,7 @@ exports.escapeShell = function( s ) {
  * @returns {Array} list of all files
  *
  * Recursivly gets all files -
- * Dotfiles and files prefixed with a 
+ * Dotfiles and files prefixed with a
  * dash wount be loaded
  */
 
@@ -26,32 +26,32 @@ exports.readdirRecursiveSync = function( rootDir ){
 	return (function travel( dir, dirs, traveld ){
 		var files = []
 
-		try{
+		try {
 			files = fs.readdirSync(dir);
 		} catch(err){
 			return files;
 		}
-		
-	    files.forEach(function(file){
+
+		files.forEach(function(file){
 	    	/**
 	    	 * Dont load dotfiles and dashed files
-	    	 * ProTipp: prefix files with a dash to prevent the loading 
+	    	 * ProTipp: prefix files with a dash to prevent the loading
 	    	 */
-	    	if(file.charAt(0) === '.' || file.charAt(0) === '_'){
+	    	if (file.charAt(0) === '.' || file.charAt(0) === '_'){
 	    		return;
 	    	}
 
         	var filePath = [dir, file].join('/'),
             	stat = fs.statSync(filePath);
 
-            if( stat.isDirectory() ){
+            if (stat.isDirectory()){
             	var copy = traveld.slice();
 
             	copy.push(file);
             	travel(filePath, dirs, copy);
             } else {
             	var p = traveld.join('/');
-            	dirs.push({ path : filePath, name: (p ? p + '/' : '' ) + formatName(file) });
+            	dirs.push({ path: filePath, name: (p ? p + '/' : '' ) + formatName(file) });
             }
 	    });
 
@@ -59,13 +59,12 @@ exports.readdirRecursiveSync = function( rootDir ){
 	})(rootDir, [], []);
 };
 
-
 /**
  * exists
  * thunkified version of fs.exists
  * @api public
  */
- 
+
 exports.exists = function(path){
 	return function(fn){
 		fs.exists(path, function(a){
@@ -73,7 +72,6 @@ exports.exists = function(path){
 		});
 	}
 };
-
 
 /**
  * replaces .js

@@ -32,7 +32,7 @@ var renderCache = {};
 function *render(view, options) {
     view += renderSettings.viewExt;
     var viewPath = path.join(Risotto.APP, 'views', view);
-    
+
     //expose Risotto.config
     options.Risotto = {
       config: Risotto.config
@@ -60,7 +60,6 @@ function *render(view, options) {
     return fn.call(this, options);
 }
 
-
 /**
  * Expose the BaseController.
  */
@@ -80,7 +79,7 @@ function BaseController(){}
 
 var proto = BaseController.prototype;
 
-_.extend(proto, {   
+_.extend(proto, {
     /**
     * generate html with view name and options
     * @param {String} view
@@ -92,8 +91,8 @@ _.extend(proto, {
         options.user = this.user || null;
 
         var html = yield *render.call(this, view, options);
-
         var layout = ("layout" in options && options.layout === false) ? false : (options.layout || renderSettings.layout);
+
         if (layout) {
           // if using layout
           options.body = html;
@@ -103,18 +102,16 @@ _.extend(proto, {
         this.type = 'html';
         this.body = html;
     },
-
-
     /**
      * array holding the beforeFilter names
      */
-     
+
     beforeFilter: [],
 
     /**
      * array holding the afterFilter names
      */
-     
+
     afterFilter: []
 });
 
@@ -137,6 +134,6 @@ delegate(proto, 'koaContext')
 
 /**
  * Make it extendable.
- */ 
+ */
 
 BaseController.extend = extend;
