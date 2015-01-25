@@ -32,17 +32,17 @@ function initializeController( path ){
 
 exports.performChecks = function*( app ){
 	var	checks = {
-		"Application File": app.APP + 'application.js',
-		"Config File": app.CONFIG + app.env + '.js',
-		"Controller dir": app.APP + 'controllers/',
-		"Route File": app.CONFIG + 'routes.yml'
+		"Application File" : app.APP + 'application.js',
+		"Config File" : app.CONFIG + app.env + '.js',
+		"Controller Directory" : app.APP + 'controllers/',
+		"Route File" : app.CONFIG + 'routes.yml'
 	};
 
-	for (var check in checks){
-		var exists = yield utils.exists(checks[check]);
-
-		if (!exists){
-			app.exit("No " + check + " searched for: " + checks[check]);
+	for(var check in checks){
+		try{
+			yield utils.exists(checks[check]);
+		} catch(err){
+			app.exit("No " + check + ", searched for: " + checks[check]);
 		}
 	}
 };
