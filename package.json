@@ -1,6 +1,6 @@
 {
   "name": "risotto",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Sebastian Otto <sebastian@wemakeweb.de>",
   "description": "Risotto is a VC framework based on koajs. it makes heavy use of es6 harmony features and thus requires node´s **--harmony** flag",
   "repository": {
