@@ -57,7 +57,7 @@ function Risotto(){
  * This method will globalize Risotto!
  */
 
-Risotto.prototype.initialize = co(function*( base ){
+Risotto.prototype.initialize = co(function*( base, cb ){
 	//load the check lib
 	require('./src/check');
 
@@ -111,6 +111,11 @@ Risotto.prototype.initialize = co(function*( base ){
 
 	//ready to go
 	this.logger.info("Ready!");
+
+	//initialization callback
+	if(cb) {
+		return cb();
+	}
 });
 
 /**
