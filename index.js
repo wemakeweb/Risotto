@@ -1,6 +1,7 @@
 var flags = require('optimist').argv,
 	Logger = require('./src/logger'),
 	cli = require('./src/cli'),
+	scaff = require('./src/scaff'),
 	startup = require('./src/startup'),
 	path = require('path'),
 	redis = require("redis"),
@@ -66,9 +67,16 @@ Risotto.prototype.initialize = co(function*( base, cb ){
 
 	//load cli
 	yield cli.init(this.version);
-	var params = yield cli.getParams();
+	this.cli = yield cli.getParams();
 
-	//needs setup
+	console.log(this.cli);
+
+	//scaffolding?
+	if(this.cli.scaffolding) {
+		yield scaff.getDefaultRepo();
+	}
+
+	return;
 
 	//production mode?
 	this.env = (params.production) ? 'production' : 'development';

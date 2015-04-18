@@ -5,6 +5,7 @@ var program = require('commander');
  * @type {Object}
  */
 var parameters = [
+	{scaffolding: ['-s, --scaffolding', 'Initializes the Risotto default project-structure']},
 	{production: ['-p, --production', 'Starts Risotto in production-mode']},
 ];
 
