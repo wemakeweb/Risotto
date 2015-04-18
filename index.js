@@ -1,5 +1,6 @@
 var flags = require('optimist').argv,
 	Logger = require('./src/logger'),
+	cli = require('./src/cli'),
 	startup = require('./src/startup'),
 	path = require('path'),
 	redis = require("redis"),
@@ -59,12 +60,18 @@ function Risotto(){
  * This method will globalize Risotto!
  */
 
-Risotto.prototype.initialize = co(function*( base, prod, cb ){
+Risotto.prototype.initialize = co(function*( base, cb ){
 	//load the check lib
 	require('./src/check');
 
+	//load cli
+	yield cli.init(this.version);
+	var params = yield cli.getParams();
+
+	//needs setup
+
 	//production mode?
-	this.env = (prod) ? 'production' : 'development';
+	this.env = (params.production) ? 'production' : 'development';
 	this.devMode = (this.env == "development");
 
 	this.path = base;
