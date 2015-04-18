@@ -57,6 +57,7 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/jshint src/ --reporter=./node_modules/jshint-full-path/index.js",
-    "codeStyle": "./node_modules/.bin/jscs ."
+    "codeStyle": "./node_modules/.bin/jscs .",
+    "start": "node --harmony index.js"
   }
 }
