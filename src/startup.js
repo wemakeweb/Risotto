@@ -134,6 +134,25 @@ exports.loadRoutes = function*( app ){
 
 exports.loadModules = function*( app ){
 	var initializers = utils.readdirRecursiveSync(app.APP + 'modules/');
+
+	// initialize db-module first, because it initializes all database models
+	// (fix for potential race-conditions if a filename starts with a,b,c)
+	for(var i = 0; i < initializers.length; i++) {
+		// get db-module, initialize it and remove it from initializers-array
+		if(initializers[i].name === 'Db') {
+			try {
+				var module = require(initializers[i].path);
+				yield module.initialize(app);
+
+				initializers.splice(i, 1);
+			} catch(err) {
+				app.exit('Initializer db failed with: ' + err);
+			}
+
+			break;
+		}
+	}
+
 	for (var initializer in initializers){
 		try {
 			var module = require(initializers[initializer].path);
