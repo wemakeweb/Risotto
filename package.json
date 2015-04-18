@@ -8,34 +8,36 @@
     "url": "https://github.com/wemakeweb/Risotto.git"
   },
   "dependencies": {
-    "hiredis": "~0.1.17",
-    "redis": "~0.11.0",
-    "optimist": "*",
-    "backbone-validation": "0.7.1",
-    "ejs": "0.8.2",
-    "consolidate": "*",
-    "express-partials": "*",
-    "connect-redis": "~1.4.5",
-    "cradle": "~0.6.4",
-    "gaze": "~0.3.3",
     "async": "*",
-    "co": "~3.0.6",
-    "js-yaml": "~3.1.0",
-    "thunkify": "~2.1.2",
-    "koa": "~0.8.2",
-    "koala": "git+http://github.com/wemakeweb/koala.git",
-    "koa-router": "~3.2.3",
-    "delegates": "0.0.3",
-    "underscore": "~1.6.0",
     "backbone": "~1.1.2",
-    "koa-generic-session": "~1.2.0",
-    "koa-redis": "~0.1.1",
+    "backbone-validation": "0.7.1",
+    "co": "~3.0.6",
     "co-exec": "~1.1.0",
-    "koa-static": "~1.4.6",
-    "koa-ejs": "~1.1.0",
     "co-fs": "~1.2.0",
     "co-redis": "~1.1.0",
-    "generator-foreach": "~0.1.0"
+    "commander": "^2.8.0",
+    "connect-redis": "~1.4.5",
+    "consolidate": "*",
+    "cradle": "~0.6.4",
+    "delegates": "0.0.3",
+    "ejs": "0.8.2",
+    "express-partials": "*",
+    "gaze": "~0.3.3",
+    "generator-foreach": "~0.1.0",
+    "hiredis": "~0.1.17",
+    "js-yaml": "~3.1.0",
+    "koa": "~0.8.2",
+    "koa-ejs": "~1.1.0",
+    "koa-generic-session": "~1.2.0",
+    "koa-redis": "~0.1.1",
+    "koa-router": "~3.2.3",
+    "koa-static": "~1.4.6",
+    "koala": "git+http://github.com/wemakeweb/koala.git",
+    "optimist": "*",
+    "redis": "~0.11.0",
+    "thunkify": "~2.1.2",
+    "transfer-github": "^0.2.0",
+    "underscore": "~1.6.0"
   },
   "engines": {
     "node": ">=0.11.13"
@@ -57,6 +59,7 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/jshint src/ --reporter=./node_modules/jshint-full-path/index.js",
-    "codeStyle": "./node_modules/.bin/jscs ."
+    "codeStyle": "./node_modules/.bin/jscs .",
+    "start": "node --harmony index.js"
   }
 }
